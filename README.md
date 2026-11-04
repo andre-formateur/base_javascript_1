@@ -209,10 +209,7 @@ Testez toutes les combinaisons possibles en changeant les valeurs des variables.
 
 Demandez une année à l'utilisateur avec `prompt` et indiquez avec `alert` si elle est bissextile.
 
-Une année est bissextile si :
-
-- elle est divisible par **4**, **et**
-- elle n'est **pas** divisible par **100**, **sauf** si elle est divisible par **400**.
+Une année est bissextile si elle est divisible par **4**. (Je sais que ce n'est pas 100% vrai mais c'est pour ne pas complexifier d'avantage l'exercice).
 
 **Jeu de tests :**
 
@@ -223,8 +220,6 @@ Une année est bissextile si :
 | 1900 | Non |
 | 2000 | Oui |
 | 2100 | Non |
-
-💡 Pour savoir si un nombre est divisible par un autre, utilisez le modulo `%` : si le reste vaut `0`, il est divisible.
 
 ### Exercice 5.2 : Le tarif de la piscine
 
