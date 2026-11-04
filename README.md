@@ -24,7 +24,6 @@ Ouvrez `index.html` dans votre navigateur, puis ouvrez la console (touche **F12*
 
 - Écrivez le code **vous-même**, sans copier-coller : c'est comme ça qu'on apprend.
 - Testez votre programme avec **plusieurs valeurs** différentes.
-- Si vous bloquez, relisez le cours, puis regardez l'indice 💡.
 - Faites un commit Git après chaque niveau terminé.
 
 ---
@@ -61,7 +60,7 @@ Alice Martin
 ### Exercice 1.3 : Présentation
 
 1. Créez trois variables : `prenom`, `age` et `ville`.
-2. Affichez une phrase de présentation en utilisant l'**interpolation** (les accents graves `` ` ``).
+2. Affichez une phrase de présentation en utilisant l'**interpolation** (les backticks `` ` ``).
 
 **Résultat attendu :**
 
@@ -101,26 +100,21 @@ console.log(10 % 3 + 1);
 ```
 
 2. Exécutez ensuite le code et comparez avec vos prédictions.
-3. Calculez enfin la **moyenne** de trois notes (`note1`, `note2`, `note3`) et affichez-la.
+3. Calculez enfin la **moyenne** de trois nombres (créez des variables pour chacun d'entre eux) et affichez-la.
 
 💡 Pour la moyenne, faites attention aux parenthèses : l'addition doit être faite **avant** la division.
 
 ### Exercice 2.3 : Vrai ou faux ?
 
-Avec `a = 10` et `b = 5`, affichez le résultat de chaque comparaison :
+**Devinez avant d'exécuter** le résultat de ces lignes :
 
 ```js
-a > b
-a < b
-a === b
-a !== b
-a >= 10
-b <= 4
-```
-
-Puis **devinez avant d'exécuter** le résultat de ces deux lignes et expliquez la différence :
-
-```js
+console.log(a > b);
+console.log(a < b);
+console.log(a === b);
+console.log(a !== b);
+console.log(a >= 10);
+console.log(b <= 4);
 console.log(5 == "5");
 console.log(5 === "5");
 ```
@@ -134,8 +128,6 @@ console.log(5 === "5");
 1. Créez une variable `age`.
 2. À l'aide d'un `if / else`, affichez `Vous êtes majeur.` ou `Vous êtes mineur.` dans la console.
 3. Testez avec les valeurs `10`, `18` et `45`.
-
-💡 Faites bien attention au cas `18` : utilisez-vous `>` ou `>=` ?
 
 ### Exercice 3.2 : La mention
 
@@ -161,7 +153,7 @@ const accompagne = true;   // la personne est-elle accompagnée d'un adulte ?
 const aUnBillet = true;
 ```
 
-Écrivez un programme avec les **opérateurs logiques** (`&&`, `||`, `!`) qui affiche `Entrée autorisée` ou `Entrée refusée` selon ces règles :
+Écrivez un programme avec les **opérateurs logiques** (`&&`, `||`) qui affiche `Entrée autorisée` ou `Entrée refusée` selon ces règles :
 
 - il faut obligatoirement avoir un billet ;
 - il faut avoir **au moins 16 ans**, **ou** être accompagné d'un adulte.
@@ -304,14 +296,5 @@ Clé : oui
 ```
 
 💡 Pour afficher « oui » ou « non » à partir d'un booléen, utilisez l'opérateur ternaire.
-
-### Objectifs supplémentaires (facultatifs)
-
-- ⭐ Ajoutez une **quatrième porte** de votre invention avec sa propre règle.
-- ⭐ Ajoutez une variable `or` (pièces d'or) que le joueur peut gagner ou perdre, et affichez-la dans le récapitulatif.
-- ⭐⭐ Rendez le code secret du coffre **aléatoire** : `Math.floor(Math.random() * 5) + 1` donne un nombre entier entre 1 et 5.
-- ⭐⭐ Gérez le cas où le joueur clique sur **Annuler** ou saisit autre chose qu'un nombre : `prompt` renvoie alors `null` ou une chaîne inattendue.
-
----
 
 Bon courage ! 💪
