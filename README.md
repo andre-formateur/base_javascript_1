@@ -109,6 +109,9 @@ console.log(10 % 3 + 1);
 **Devinez avant d'exécuter** le résultat de ces lignes :
 
 ```js
+const a = 5;
+const b = 8;
+
 console.log(a > b);
 console.log(a < b);
 console.log(a === b);
@@ -179,7 +182,6 @@ Testez toutes les combinaisons possibles en changeant les valeurs des variables.
 1. Demandez à l'utilisateur un nombre entre 1 et 7 avec `prompt`.
 2. À l'aide d'un `switch`, affichez avec `alert` le jour correspondant (1 = lundi, 2 = mardi... 7 = dimanche).
 3. Pour toute autre valeur, affichez `Ce numéro n'est pas valide.` (cas `default`).
-4. **Bonus :** affichez aussi `C'est le week-end !` pour le samedi et le dimanche (en regroupant les cas).
 
 💡 `prompt` renvoie toujours une **chaîne de caractères**, même si l'utilisateur tape un nombre. Vous pouvez la convertir avec `Number(...)`, ou simplement faire correspondre vos `case` avec des chaînes (`"1"`, `"2"`...).
 
