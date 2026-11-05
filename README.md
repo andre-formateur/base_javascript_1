@@ -262,36 +262,78 @@ Demandez à l'utilisateur les longueurs des trois côtés d'un triangle avec `pr
 
 ---
 
-## 🏆 Challenge bonus : Le donjon mystérieux
+## 🏆 Challenge bonus : La borne de commande de la pizzeria
 
-Ce challenge reprend **toutes les notions** du cours : chaînes, concaténation, interpolation, nombres, booléens, variables, conditions, ternaire, `switch` et interactions.
+Ce challenge reprend **toutes les notions** du cours : chaînes, concaténation, interpolation, nombres, opérations, booléens, variables, conditions, ternaire, `switch` et interactions.
 
-Vous allez créer une **mini-aventure textuelle** jouable dans le navigateur.
+Vous allez créer le programme d'une **borne de commande** pour une pizzeria : il pose des questions au client, calcule le prix, puis affiche un ticket. (Si vous le souhaitez, adaptez les pizzas et les prix à la carte de votre site de pizzeria.)
 
-### Le scénario
+### Les règles
 
-1. **Début :** demandez le prénom du joueur avec `prompt`. Créez une variable `pointsDeVie` (au départ `10`) et une variable `aUneCle` (au départ `false`). Affichez un message d'accueil avec `alert`.
-2. **Les portes :** le héros arrive devant 3 portes. Demandez avec `prompt` laquelle il choisit (1, 2 ou 3), puis utilisez un `switch` :
-   - **Porte 1 : le gobelin.** Demandez avec `confirm` : `Un gobelin vous barre la route. Voulez-vous le combattre ?`
-     - Si oui : le joueur perd `4` points de vie, mais trouve une clé (`aUneCle` passe à `true`).
-     - Si non : il fuit et perd `1` point de vie.
-   - **Porte 2 : le coffre.** Demandez avec `prompt` de deviner le code secret (un nombre entre 1 et 5, choisi par vous dans le code).
-     - Bonne réponse : le joueur gagne `5` points de vie.
-     - Mauvaise réponse : le coffre piège le joueur et il perd `3` points de vie.
-   - **Porte 3 : le dragon.** Le joueur perd `6` points de vie, sauf s'il possède déjà une clé (dans ce cas, il perd seulement `2` points de vie).
-   - Autre choix : affichez `Vous hésitez trop longtemps...` et le joueur perd `2` points de vie.
-3. **Fin :**
-   - Si `pointsDeVie` est inférieur ou égal à `0` : `Game over, <prénom>...`
-   - Si `pointsDeVie` est supérieur ou égal à `10` **et** que le joueur a la clé : `Victoire totale !`
-   - Sinon, si `pointsDeVie` est supérieur à `0` : `Vous survivez avec <points> points de vie.`
-4. Affichez un **récapitulatif** final avec `alert`, en utilisant l'interpolation :
+**1. Horaires.** Demandez avec `prompt` l'heure actuelle (un nombre entre 0 et 23). La pizzeria est ouverte de **11 h à 22 h inclus**. Stockez le résultat dans un booléen `estOuvert`. Si la pizzeria est fermée, affichez `Désolé, nous sommes fermés.` et ne continuez pas la commande.
+
+**2. Prénom.** Demandez le prénom du client avec `prompt`.
+
+**3. La pizza.** Demandez avec `prompt` le numéro de la pizza, puis utilisez un `switch` pour définir le nom et le prix de base :
+
+| Numéro | Pizza | Prix de base |
+|--------|-------|--------------|
+| 1 | Margherita | 9 € |
+| 2 | Reine | 11 € |
+| 3 | Quatre fromages | 12 € |
+| autre | choix invalide | commande annulée |
+
+**4. La taille.** Demandez la taille avec `prompt` (`P`, `M` ou `G`) et utilisez un `switch` :
+
+| Taille | Supplément |
+|--------|------------|
+| P (petite) | + 0 € |
+| M (moyenne) | + 2 € |
+| G (grande) | + 4 € |
+| autre | taille invalide, commande annulée |
+
+**5. Les options.** Avec deux `confirm` :
+- `Fromage supplémentaire ?` : + 1,50 €
+- `Ajouter une boisson ?` : + 2 €
+
+**6. Le mode de retrait.** Avec `confirm`, demandez : `Livraison à domicile ?`
+- Livraison : **3 €** de frais, **offerts** si le sous-total (pizza + taille + options) est **supérieur ou égal à 18 €**.
+- Sur place : pas de frais.
+
+**7. Le code promo.** Demandez avec `prompt` un éventuel code promo :
+- `PIZZA10` : **10 % de réduction** sur le sous-total (les frais de livraison ne sont pas concernés) ;
+- champ vide : pas de réduction, sans message d'erreur ;
+- tout autre code : pas de réduction et message `Code promo invalide.`
+
+**8. Le ticket.** Si la commande est valide, affichez le ticket dans la console avec l'interpolation. Utilisez l'**opérateur ternaire** pour écrire « oui » / « non » et « livraison » / « sur place » :
 
 ```
-Joueur : Alice
-Points de vie : 6
-Clé : oui
+===== TICKET =====
+Client : Alice
+Pizza : Reine (M)
+Fromage supplémentaire : non
+Boisson : oui
+Mode : sur place
+Sous-total : 15.00 €
+Remise : 0.00 €
+Livraison : 0.00 €
+TOTAL : 15.00 €
 ```
 
-💡 Pour afficher « oui » ou « non » à partir d'un booléen, utilisez l'opérateur ternaire.
+💡 Pour éviter les affichages du type `17.549999999999997`, vous pouvez arrondir un prix à 2 décimales avec `prix.toFixed(2)`.
+
+💡 Utilisez une variable booléenne `commandeValide` : elle passe à `false` dès qu'une saisie est invalide, et le ticket ne s'affiche que si elle vaut `true`.
+
+### Jeu de tests
+
+| Heure | Pizza | Taille | Fromage | Boisson | Livraison | Code | Résultat attendu |
+|-------|-------|--------|---------|---------|-----------|------|------------------|
+| 20 | 2 (Reine) | M | non | oui | non | (vide) | Total : **15.00 €** |
+| 12 | 3 (Quatre fromages) | G | oui | oui | oui | (vide) | Sous-total 19.50 €, livraison offerte, total : **19.50 €** |
+| 12 | 3 (Quatre fromages) | G | oui | oui | oui | PIZZA10 | Remise 1.95 €, total : **17.55 €** |
+| 19 | 1 (Margherita) | P | non | non | oui | (vide) | Sous-total 9.00 €, livraison 3.00 €, total : **12.00 €** |
+| 19 | 1 (Margherita) | P | non | non | non | ABC | `Code promo invalide.`, total : **9.00 €** |
+| 9 | (peu importe) | | | | | | `Désolé, nous sommes fermés.` |
+| 20 | 7 | | | | | | Commande annulée (choix invalide) |
 
 Bon courage ! 💪
