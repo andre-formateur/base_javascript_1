@@ -105,16 +105,19 @@ if (estOuvert) {
         const prixLivraisonTicket = prixLivraison.toFixed(2);
         const totalTicket = ((prix - remise) + prixLivraison).toFixed(2);
 
+        // NOTE : Sur la vidéo de correction je vous ai parlé de \n pour le retour à la ligne.
+        // Je me suis trompé, ce n'est pas nécessaire !
+
         alert(`
-            ===== TICKET ===== \n
-            Client : ${prenom} \n
-            Pizza : ${pizza} \n
-            Fromage supplémentaire : ${fromageTicket} \n
-            Boisson : ${boissonTicket} \n
-            Mode : ${livraisonTicket} \n
-            Sous-total : ${sousTotalTicket} € \n
-            Remise : ${remiseTicket} € \n
-            Livraison : ${prixLivraisonTicket} € \n
+            ===== TICKET =====
+            Client : ${prenom}
+            Pizza : ${pizza}
+            Fromage supplémentaire : ${fromageTicket}
+            Boisson : ${boissonTicket}
+            Mode : ${livraisonTicket}
+            Sous-total : ${sousTotalTicket} €
+            Remise : ${remiseTicket} €
+            Livraison : ${prixLivraisonTicket} €
             TOTAL : ${totalTicket} €
         `);
 
